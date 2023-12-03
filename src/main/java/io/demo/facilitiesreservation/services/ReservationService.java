@@ -7,13 +7,13 @@ import io.demo.facilitiesreservation.entities.Reservation;
 
 public interface ReservationService {
 
-    Reservation createReservation(Reservation reservation);
+    // Reservation createReservation(Reservation reservation);
 
     Reservation getReservation(UUID id);
 
     ArrayList<Reservation> getAllReservation();
 
-    Reservation updateReservation(UUID id, Reservation reservation);
+    Reservation saveReservation(Reservation reservation);
 
     void deleteReservation(UUID id);
 
