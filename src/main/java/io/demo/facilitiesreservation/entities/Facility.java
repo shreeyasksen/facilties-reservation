@@ -1,5 +1,7 @@
 package io.demo.facilitiesreservation.entities;
 
+import java.util.Set;
+
 import io.demo.facilitiesreservation.entities.types.ValidTypesOfFaciltiesEnum;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -30,7 +32,7 @@ public class Facility {
     private Long id;
 
     @OneToMany(mappedBy = "facility", cascade = CascadeType.ALL)
-    private Reservation reservation;
+    Set<Reservation> reservation;
 
     @NotBlank(message = "Facility name is COMPULSORY")
     @Size(min = 3, max = 40, message = "Name must be at least 3 characters.")

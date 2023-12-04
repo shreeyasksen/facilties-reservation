@@ -31,7 +31,7 @@ public class Reservation {
     // Foreign Key 1 - facility ID
 
     @JsonBackReference
-    @ManyToOne
+    @ManyToOne(optional = false)
     @JoinColumn(name = "facility_id", referencedColumnName = "id")
     private Facility facility;
 

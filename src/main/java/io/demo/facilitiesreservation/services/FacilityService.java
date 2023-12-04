@@ -6,7 +6,7 @@ import io.demo.facilitiesreservation.entities.Facility;
 
 public interface FacilityService {
 
-    Facility createFacility(Facility facility);
+    Facility saveFacility(Facility facility);
 
     Facility getFacility(Long id);
 
@@ -14,11 +14,11 @@ public interface FacilityService {
 
     ArrayList<Facility> getAvailable(String dateFrom, String dateTo);
 
-    void doesReservationOverlap(Facility hotel);
+    void doesReservationOverlap(Facility facility);
 
     boolean validateFacilityExistenceById(Long id);
 
-    Facility updateFacility(Long id, Facility facility);
+    Facility updateFacility(Facility facility);
 
     void deleteFacility(Long id);
 }

@@ -1,5 +1,6 @@
 package io.demo.facilitiesreservation.entities;
 
+import java.util.Set;
 import java.util.UUID;
 
 import jakarta.persistence.CascadeType;
@@ -43,7 +44,7 @@ public class Customer {
 
     // Foreign
     @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
-    private Reservation reservation;
+    Set<Reservation> reservation;
 
     public Customer() {
         this.id = UUID.randomUUID();
