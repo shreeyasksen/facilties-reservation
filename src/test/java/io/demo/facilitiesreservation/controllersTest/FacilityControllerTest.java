@@ -28,7 +28,7 @@ class FacilityControllerTest {
     @Test
     void testGetAllFacility() {
         // Arrange
-        ArrayList<Facility> allFacility = new ArrayList<>(); // You need to create a list of facilities here
+        ArrayList<Facility> allFacility = new ArrayList<>(); // make new facility
 
         // Configure the mock behavior
         when(facilityService.getAllFacility()).thenReturn(allFacility);
@@ -46,7 +46,7 @@ class FacilityControllerTest {
     void testGetFacility() {
         // Arrange
         Long facilityId = 1L;
-        Facility foundFacility = new Facility(); // You need to create a facility here
+        Facility foundFacility = new Facility(); // Create a facility here
 
         // Configure the mock behavior
         when(facilityService.getFacility(facilityId)).thenReturn(foundFacility);
