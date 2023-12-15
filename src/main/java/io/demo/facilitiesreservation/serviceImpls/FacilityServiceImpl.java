@@ -4,6 +4,9 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
+
+import org.springframework.stereotype.Service;
 
 import io.demo.facilitiesreservation.entities.Facility;
 import io.demo.facilitiesreservation.entities.Reservation;
@@ -11,6 +14,7 @@ import io.demo.facilitiesreservation.repositories.FacilityRepository;
 import io.demo.facilitiesreservation.repositories.ReservationRepository;
 import io.demo.facilitiesreservation.services.FacilityService;
 
+@Service
 public class FacilityServiceImpl implements FacilityService {
 
     private FacilityRepository facilityRepository;
@@ -59,7 +63,7 @@ public class FacilityServiceImpl implements FacilityService {
         String availTo = facility.getAvailableTo();
         Long facilityId = facility.getId();
         List<Reservation> matchReservationList = reservationRepository.findAll().stream().filter(reservations -> {
-            if (reservations.getFacility().getId() == facilityId) {
+            if (Objects.equals(reservations.getFacility().getId(), facilityId)) {
                 try {
                     int checkInBeforeAvailFrom = sdf.parse(reservations.getCheckIn()).compareTo(sdf.parse(availFrom));
                     int checkInBeforeAvailTo = sdf.parse(reservations.getCheckOut()).compareTo(sdf.parse(availTo));
