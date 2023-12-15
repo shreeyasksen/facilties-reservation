@@ -19,8 +19,10 @@ import io.demo.facilitiesreservation.entities.Customer;
 import io.demo.facilitiesreservation.entities.Reservation;
 import io.demo.facilitiesreservation.services.CustomerService;
 import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
 
 @RestController
+@RequiredArgsConstructor
 @RequestMapping("/customers")
 public class CustomerController {
 
