@@ -61,7 +61,7 @@ public class FacilityController {
     }
 
     // POST new Facility
-    @PostMapping()
+    @PostMapping(produces = "application/json")
     public ResponseEntity<Facility> createFacility(@Valid @RequestBody Facility facility) {
         FacilityValidator.validateFacilityPOST(facility);
         log.info("New Facility added: {}", facility);

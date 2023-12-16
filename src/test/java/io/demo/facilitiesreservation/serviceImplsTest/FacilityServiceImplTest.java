@@ -1,21 +1,20 @@
 package io.demo.facilitiesreservation.serviceImplsTest;
 
-import io.demo.facilitiesreservation.entities.Facility;
-import io.demo.facilitiesreservation.entities.Reservation;
-import io.demo.facilitiesreservation.repositories.FacilityRepository;
-import io.demo.facilitiesreservation.repositories.ReservationRepository;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
+
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.*;
+import io.demo.facilitiesreservation.entities.Facility;
+import io.demo.facilitiesreservation.repositories.FacilityRepository;
+import io.demo.facilitiesreservation.repositories.ReservationRepository;
+import io.demo.facilitiesreservation.serviceImpls.FacilityServiceImpl;
 
 class FacilityServiceImplTest {
 
@@ -26,7 +25,7 @@ class FacilityServiceImplTest {
     private ReservationRepository reservationRepository;
 
     @InjectMocks
-    private FacilityServiceImpl facilityService;
+    FacilityServiceImpl facilityService;
 
     // This method initializes the mocks before each test
     void setUp() {
@@ -36,7 +35,7 @@ class FacilityServiceImplTest {
     @Test
     void testSaveFacility() {
         // Arrange
-        Facility facility = new Facility();
+        Facility facility = new Facility(null, null, null, null, null, null, null, false);
         when(facilityRepository.save(facility)).thenReturn(facility);
 
         // Act
@@ -51,7 +50,8 @@ class FacilityServiceImplTest {
     void testGetFacility_ValidId() {
         // Arrange
         Long facilityId = 1L;
-        when(facilityRepository.findById(facilityId)).thenReturn(java.util.Optional.of(new Facility()));
+        when(facilityRepository.findById(facilityId))
+                .thenReturn(java.util.Optional.of(new Facility(facilityId, null, null, null, null, null, null, false)));
 
         // Act
         Facility result = facilityService.getFacility(facilityId);

@@ -1,20 +1,19 @@
 package io.demo.facilitiesreservation.serviceImplsTest;
 
-import io.demo.facilitiesreservation.entities.Facility;
-import io.demo.facilitiesreservation.entities.Reservation;
-import io.demo.facilitiesreservation.repositories.FacilityRepository;
-import io.demo.facilitiesreservation.repositories.ReservationRepository;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.mockito.Mockito.when;
+
+import java.util.UUID;
+
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-import java.util.ArrayList;
-import java.util.Optional;
-import java.util.UUID;
-
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.*;
+import io.demo.facilitiesreservation.repositories.FacilityRepository;
+import io.demo.facilitiesreservation.repositories.ReservationRepository;
+import io.demo.facilitiesreservation.serviceImpls.ReservationServiceImpl;
 
 class ReservationServiceImplTest {
 
@@ -25,7 +24,7 @@ class ReservationServiceImplTest {
     private FacilityRepository facilityRepository;
 
     @InjectMocks
-    private ReservationServiceImpl reservationService;
+    ReservationServiceImpl reservationService;
 
     // This method initializes the mocks before each test
     void setUp() {

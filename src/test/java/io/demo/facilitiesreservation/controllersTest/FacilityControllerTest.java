@@ -1,3 +1,12 @@
+package io.demo.facilitiesreservation.controllersTest;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
+
+import java.util.ArrayList;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -6,10 +15,9 @@ import org.mockito.MockitoAnnotations;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
-import java.util.ArrayList;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.Mockito.*;
+import io.demo.facilitiesreservation.controllers.FacilityController;
+import io.demo.facilitiesreservation.entities.Facility;
+import io.demo.facilitiesreservation.services.FacilityService;
 
 class FacilityControllerTest {
 
@@ -46,7 +54,7 @@ class FacilityControllerTest {
     void testGetFacility() {
         // Arrange
         Long facilityId = 1L;
-        Facility foundFacility = new Facility(); // Create a facility here
+        Facility foundFacility = new Facility(facilityId, null, null, null, null, null, null, false);
 
         // Configure the mock behavior
         when(facilityService.getFacility(facilityId)).thenReturn(foundFacility);

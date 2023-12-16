@@ -11,7 +11,6 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Digits;
 import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -23,6 +22,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @AllArgsConstructor
+
 @Table(name = "customer")
 public class Customer {
 
@@ -30,7 +30,6 @@ public class Customer {
     @Column(name = "id")
     private UUID id;
 
-    @Min(1)
     @NotBlank(message = "Please provide name")
     @Column(name = "name")
     private String name;

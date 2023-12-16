@@ -75,7 +75,7 @@ public class CustomerController {
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
-    @PostMapping("/{id}")
+    @PostMapping(value = "/{id}", produces = "application/json")
     public ResponseEntity<Reservation> addReservationToCustomer(@PathVariable UUID id,
             @Valid @RequestBody Reservation reservation) {
         Reservation newReservation = customerService.addReservation(id, reservation);

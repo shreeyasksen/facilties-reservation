@@ -1,1 +1,6 @@
 io/demo/facilitiesreservation/FacilitiesReservationApplicationTests.class
+io/demo/facilitiesreservation/serviceImplsTest/ReservationServiceImplTest.class
+io/demo/facilitiesreservation/controllersTest/CustomerControllerTest.class
+io/demo/facilitiesreservation/serviceImplsTest/CustomerServiceImplTest.class
+io/demo/facilitiesreservation/serviceImplsTest/FacilityServiceImplTest.class
+io/demo/facilitiesreservation/controllersTest/FacilityControllerTest.class

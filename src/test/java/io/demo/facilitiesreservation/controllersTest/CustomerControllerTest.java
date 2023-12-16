@@ -1,7 +1,12 @@
-import io.demo.facilitiesreservation.controllers.CustomerController;
-import io.demo.facilitiesreservation.entities.Customer;
-import io.demo.facilitiesreservation.entities.Reservation;
-import io.demo.facilitiesreservation.services.CustomerService;
+package io.demo.facilitiesreservation.controllersTest;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
+
+import java.util.ArrayList;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -10,11 +15,9 @@ import org.mockito.MockitoAnnotations;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
-import java.util.ArrayList;
-import java.util.UUID;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.Mockito.*;
+import io.demo.facilitiesreservation.controllers.CustomerController;
+import io.demo.facilitiesreservation.entities.Customer;
+import io.demo.facilitiesreservation.services.CustomerService;
 
 class CustomerControllerTest {
 
@@ -59,6 +62,5 @@ class CustomerControllerTest {
         assertEquals(mockCustomer, responseEntity.getBody());
         verify(customerService, times(1)).createCustomer(mockCustomer);
     }
-
 
 }
