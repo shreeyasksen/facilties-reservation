@@ -6,8 +6,8 @@
   - [Facility](#facility)
     - [Create facility](#create-facility)
     - [Update existing facility](#update-existing-facility)
-    - [Get all existing facilitys](#get-all-existing-facilitys)
-    - [Get all available facilitys](#get-all-available-facilitys)
+    - [Get all existing facilities](#get-all-existing-facilities)
+    - [Get all available facilities](#get-all-available-facilities)
     - [Get a user specified facility](#get-a-user-specified-facility)
     - [Delete facility](#delete-facility)
   - [Reservation](#reservation)
@@ -30,7 +30,7 @@
 ## Overview
 
 - This project is a Facility Reservation `RESTful API` designed to **create facilities and associated reservations.**
-- The user can create a facility, search for available facilitys, search for all facilitis within the database, search all reservations within the database, make reservations to a specific facility, delete reservations as well as facilitis.
+- The user can create a facility, search for available facilities, search for all facilitis within the database, search all reservations within the database, make reservations to a specific facility, delete reservations as well as facilitis.
 - Necessary validation is incorporated within the API that prevents illogical operations from occurring such as making an overlapping reservation to a facility or deleting a facility that contains reservations.
 - The Facility-Reservation-API follows a standard "`User` <-> `Controller` <-> `Validator` (Only interacts with Controller) <-> `Service` <-> `Repository` <-> `Database`" API schema.
 
@@ -42,8 +42,8 @@
 | ------ | ------------------------------------------------------- | --------------------------------------------------- | --------------------------------------------------------------- |
 | POST   | /facility                                               | Create a facility object                            | [Create facility](#create-facility)                             |
 | PATCH  | /facility                                               | Updates an existing facility                        | [Update existing facility](#update-existing-facility)           |
-| GET    | /facility                                               | Get all existing facilitys                          | [Get all existing facilitys](#get-all-existing-facilitys)       |
-| GET    | facility/availabilitySearch?dateFrom={from}&dateTo={to} | Get all available facility between specified dates. | [Get all available facilitys](#get-all-available-facility)      |
+| GET    | /facility                                               | Get all existing facilities                         | [Get all existing facilities](#get-all-existing-facilities)     |
+| GET    | facility/availabilitySearch?dateFrom={from}&dateTo={to} | Get all available facility between specified dates. | [Get all available facilities](#get-all-available-facility)     |
 | GET    | /facility/{id}                                          | Get a user specified facility                       | [Get a user specified facility](#get-a-user-specified-facility) |
 | DELETE | /facility/{id}                                          | Delete a user specified Facility                    | [Delete facility](#delete-facility)                             |
 
@@ -100,7 +100,7 @@
 
 ### Get all available facilites
 
-- Description: Gets all available facility inventories between specified dates. This endpoint takes into account pre-exisiting reservations and facility availability dates and only returns facilitys that do not have overlapping reservations and do not have availibility dates that start or end between the user specified dates.
+- Description: Gets all available facility inventories between specified dates. This endpoint takes into account pre-exisiting reservations and facility availability dates and only returns facilities that do not have overlapping reservations and do not have availibility dates that start or end between the user specified dates.
 - Validation (Throws an `InvalidRequestException` when):
   - Dates are not in YYYY-MM-DD format
   - `dateFrom` comes after `dateTo`
