@@ -176,8 +176,12 @@
 
 # Database
 
-- The database structure contains two tables, a `facility` table that contains the facility object.
-- And a `reservation` table that contains reservations objects and is associated with the `facility` table through the `facility table's Id` by storing it as a foreign key in its "facility Id" value.
+- The database structure contains 3 tables, a `facility` table that contains the facility object.
+
+- And a `customer` table that contains customers objects and is associated with the `reservation` table through the `reservation table's Id` by storing it as a foreign key in its "reservation Id" value.
+
+- And a `reservation` table that contains reservations objects and is associated with the `facility` table through the `facility table's Id` by storing it as a foreign key in its "facility Id" value, and is also associated with the `customer` table through the `customer table's Id` by storing it as a foreign in its "customer Id" value.
+
 - The table structures and values are as follows:
 
 ## facility
