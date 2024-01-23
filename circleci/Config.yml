@@ -3,8 +3,7 @@ version: 2.1
 orbs:
   openjdk: circleci/openjdk@17
   docker: circleci/docker@2.1.4
-  heroku : circleci/heroku@2.0.0
-
+  heroku: circleci/heroku@2.0.0
 
 jobs:
   build:
@@ -14,23 +13,24 @@ jobs:
       - checkout
       - openjdk/install:
           version: 17.0
-      - run: | 
+      - run:
+          name: Build and package Spring Boot application
+          command: |
+            ./mvnw clean package
+            ./mvnw clean install
 
-          name:   Build and package Spring Boot application
-          command: ./mvnw clean package, mvn clean install
-
-test:
+  test:
     docker:
       - image: cimg/openjdk:17.0
     steps:
       - checkout
       - openjdk/install:
           version: 17.0
-      - run:      
-        echo "Running tests..."
-         name: Run Spring Boot tests
-         command: ./mvnw test
-publish:
+      - run:
+          name: Run Spring Boot tests
+          command: ./mvnw test
+
+  publish:
     executor: docker/docker
     steps:
       - setup_remote_docker
@@ -43,47 +43,6 @@ publish:
           image: shreeya42001/facilities-reservation
           tag: v1.0.1
 
-deploy:
-     docker:
-       - image: cimg/openjdk:17.0
-     steps:
-       - setup_remote_docker
-       - checkout
-       - heroku/install
-       - run:
-          name: Heroku Container Push
-           command: |
-               heroku container:login
-               heroku container:push web -a shreeyasen-su-devops
-               heroku container:release web -a shreeyasen-su-devops
-  pull-and-deploy:
+  deploy:
     docker:
-      - image: cimg/openjdk:17.0
-    steps:
-      - setup_remote_docker
-      - heroku/install
-      - docker/pull:
-          images: shreeya42001/facilities-reservation:v1.0.1
-      - run:
-          name: Heroku Container Push With Image From Docker Hub
-          command: |
-              heroku container:login
-              docker tag shreeya42001/facilities-reservation:v1.0.1 registry.heroku.com/facilities-reservation/web
-              # format --- docker tag <image name from docker hub> registry.heroku.com/facilities-reservation/web
-              docker push registry.heroku.com/facilities-reservation/web
-              # format --- docker push registry.heroku.com/<app-name>/web
-              heroku container:release web -a facilities-reservation
-  workflows:
-  simple_workflow:
-    jobs:
-      - build
-      - test:
-          requires:
-            - build
-      - scan:
-          requires:
-            - test
-      - publish:
-          requires:
-            - scan
-            
+      - image: shreeya42001/facilities-reservation:v1.0.1
